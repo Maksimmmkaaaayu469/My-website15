@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Получение геолокации</title>
+</head>
+<body>
+    <h1>Получение вашего местоположения</h1>
+    <button id="getLocation">Узнать местоположение</button>
+
+    <script>
+        document.getElementById('getLocation').addEventListener('click', function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    alert("Ваше местоположение: " + latitude + ", " + longitude);
+                }, function(error) {
+                    alert("Ошибка получения местоположения: " + error.message);
+                });
+            } else {
+                alert("Геолокация не поддерживается вашим браузером.");
+            }
+        });
+    </script>
+</body>
+</html>
